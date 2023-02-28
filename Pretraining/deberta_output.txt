@@ -1,0 +1,358 @@
+How to upload a model in huggingface
+
+$ huggingface-cli login
+>>> from transformers import RobertaTokenizerFast,RobertaForMaskedLM
+>>> from transformers import AutoTokenizer
+>>> path="./"
+>>> model = RobertaForMaskedLM.from_pretrained(path)
+>>> tokenizer = AutoTokenizer.from_pretrained(path)
+>>> model.push_to_hub("Roberta-DPT-Online-Sexism-Detection")
+pytorch_model.bin: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 499M/499M [01:26<00:00, 5.74MB/s]
+Upload 1 LFS files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [01:26<00:00, 86.87s/it]
+CommitInfo(commit_url='https://huggingface.co/debashish-roy/Roberta-DPT-Online-Sexism-Detection/commit/d96b736a2a7ff59e8ae0cc6afbb4d7e7689410ba', commit_message='Upload RobertaForMaskedLM', commit_description='', oid='d96b736a2a7ff59e8ae0cc6afbb4d7e7689410ba', pr_url=None, pr_revision=None, pr_num=None)
+>>> tokenizer.push_to_hub("Roberta-DPT-Online-Sexism-Detection")
+CommitInfo(commit_url='https://huggingface.co/debashish-roy/Roberta-DPT-Online-Sexism-Detection/commit/af637a334e19e4ffae147213fa4755740b071404', commit_message='Upload tokenizer', commit_description='', oid='af637a334e19e4ffae147213fa4755740b071404', pr_url=None, pr_revision=None, pr_num=None)
+>>> 
+
+
+
+
+
+Output
+
+================================================================================================================
+
+(base) debashish.roy@gnode074:/ssd_scratch/cvit/debashish$ python deberta-pretraining.py 
+/ssd_scratch/cvit/debashish/deberta-pretraining.py:39: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  dtf_mlm=dtf_mlm1.append(dtf_mlm2)
+                                                     text
+0                       JUST SAYING.... YOU LOSE BIATCHES
+1       HOW WOULD I DESCRIBE BERKELEY RIOTS? 1) Charmi...
+2       Or maybe a little south of Herring Run. More l...
+3                                      That's funny...but
+4       Unbelievable! It Was (((Rosenstein))) Who Hid ...
+...                                                   ...
+999995  And the men and women successfully using it wo...
+999996  By taking advantage of betas. Good one. I gues...
+999997  You're clearly a fakecel if having a daughter ...
+999998  No. Suicide takes shortsightedness, blindness....
+999999  Quora has some retarded ass shit on it. I read...
+
+[2000000 rows x 1 columns]
+Some weights of the model checkpoint at microsoft/deberta-base were not used when initializing DebertaForMaskedLM: ['lm_predictions.lm_head.bias', 'lm_predictions.lm_head.dense.bias', 'lm_predictions.lm_head.dense.weight', 'lm_predictions.lm_head.LayerNorm.weight', 'deberta.embeddings.position_embeddings.weight', 'lm_predictions.lm_head.LayerNorm.bias']
+- This IS expected if you are initializing DebertaForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of DebertaForMaskedLM were not initialized from the model checkpoint at microsoft/deberta-base and are newly initialized: ['cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the training set don't have a corresponding argument in `DebertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `DebertaForMaskedLM.forward`,  you can safely ignore this message.
+/home2/debashish.roy/miniconda3/lib/python3.10/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+***** Running training *****
+  Num examples = 1700000
+  Num Epochs = 1
+  Instantaneous batch size per device = 32
+  Total train batch size (w. parallel, distributed & accumulation) = 32
+  Gradient Accumulation steps = 1
+  Total optimization steps = 53125
+  Number of trainable parameters = 139244121
+{'loss': 6.1523, 'learning_rate': 1.984912776991985e-05, 'epoch': 0.01}                                                                               
+{'loss': 4.4038, 'learning_rate': 1.9660537482319663e-05, 'epoch': 0.02}                                                                              
+{'loss': 4.0204, 'learning_rate': 1.9471947194719475e-05, 'epoch': 0.03}                                                                              
+{'loss': 3.8222, 'learning_rate': 1.9283356907119285e-05, 'epoch': 0.04}                                                                              
+{'loss': 3.6396, 'learning_rate': 1.9094766619519097e-05, 'epoch': 0.05}                                                                              
+{'loss': 3.5425, 'learning_rate': 1.890617633191891e-05, 'epoch': 0.06}                                                                               
+{'loss': 3.4384, 'learning_rate': 1.871758604431872e-05, 'epoch': 0.07}                                                                               
+{'loss': 3.3627, 'learning_rate': 1.852899575671853e-05, 'epoch': 0.08}                                                                               
+{'loss': 3.2496, 'learning_rate': 1.834040546911834e-05, 'epoch': 0.08}                                                                               
+{'loss': 3.2376, 'learning_rate': 1.8151815181518153e-05, 'epoch': 0.09}                                                                              
+{'loss': 3.1557, 'learning_rate': 1.7963224893917966e-05, 'epoch': 0.1}                                                                               
+{'loss': 3.1328, 'learning_rate': 1.7774634606317775e-05, 'epoch': 0.11}                                                                              
+{'loss': 3.0825, 'learning_rate': 1.7586044318717588e-05, 'epoch': 0.12}                                                                              
+{'loss': 3.0441, 'learning_rate': 1.7397454031117397e-05, 'epoch': 0.13}                                                                              
+{'loss': 2.9919, 'learning_rate': 1.720886374351721e-05, 'epoch': 0.14}                                                                               
+{'loss': 2.9967, 'learning_rate': 1.7020273455917022e-05, 'epoch': 0.15}                                                                              
+{'loss': 2.945, 'learning_rate': 1.683168316831683e-05, 'epoch': 0.16}                                                                                
+{'loss': 2.9422, 'learning_rate': 1.6643092880716644e-05, 'epoch': 0.17}                                                                              
+{'loss': 2.9078, 'learning_rate': 1.6454502593116456e-05, 'epoch': 0.18}                                                                              
+{'loss': 2.8767, 'learning_rate': 1.626591230551627e-05, 'epoch': 0.19}                                                                               
+{'loss': 2.8558, 'learning_rate': 1.6077322017916078e-05, 'epoch': 0.2}                                                                               
+{'loss': 2.853, 'learning_rate': 1.588873173031589e-05, 'epoch': 0.21}                                                                                
+{'loss': 2.8177, 'learning_rate': 1.5700141442715703e-05, 'epoch': 0.22}                                                                              
+{'loss': 2.8338, 'learning_rate': 1.5511551155115512e-05, 'epoch': 0.23}                                                                              
+{'loss': 2.7868, 'learning_rate': 1.5322960867515325e-05, 'epoch': 0.24}                                                                              
+{'loss': 2.7922, 'learning_rate': 1.5134370579915136e-05, 'epoch': 0.24}                                                                              
+{'loss': 2.7854, 'learning_rate': 1.4945780292314947e-05, 'epoch': 0.25}                                                                              
+{'loss': 2.7422, 'learning_rate': 1.4757190004714759e-05, 'epoch': 0.26}                                                                              
+{'loss': 2.7704, 'learning_rate': 1.4568599717114568e-05, 'epoch': 0.27}                                                                              
+{'loss': 2.7259, 'learning_rate': 1.438000942951438e-05, 'epoch': 0.28}                                                                               
+{'loss': 2.7208, 'learning_rate': 1.4191419141914193e-05, 'epoch': 0.29}                                                                              
+{'loss': 2.7162, 'learning_rate': 1.4002828854314003e-05, 'epoch': 0.3}                                                                               
+{'loss': 2.6825, 'learning_rate': 1.3814238566713815e-05, 'epoch': 0.31}                                                                              
+{'loss': 2.7222, 'learning_rate': 1.3625648279113626e-05, 'epoch': 0.32}                                                                              
+{'loss': 2.6771, 'learning_rate': 1.3437057991513439e-05, 'epoch': 0.33}                                                                              
+{'loss': 2.6952, 'learning_rate': 1.3248467703913251e-05, 'epoch': 0.34}                                                                              
+{'loss': 2.6483, 'learning_rate': 1.305987741631306e-05, 'epoch': 0.35}                                                                               
+{'loss': 2.672, 'learning_rate': 1.2871287128712873e-05, 'epoch': 0.36}                                                                               
+{'loss': 2.6772, 'learning_rate': 1.2682696841112682e-05, 'epoch': 0.37}                                                                              
+{'loss': 2.6433, 'learning_rate': 1.2494106553512495e-05, 'epoch': 0.38}                                                                              
+{'loss': 2.6342, 'learning_rate': 1.2305516265912307e-05, 'epoch': 0.39}                                                                              
+{'loss': 2.6433, 'learning_rate': 1.2116925978312118e-05, 'epoch': 0.4}                                                                               
+{'loss': 2.6398, 'learning_rate': 1.1928335690711929e-05, 'epoch': 0.4}                                                                               
+{'loss': 2.6109, 'learning_rate': 1.173974540311174e-05, 'epoch': 0.41}                                                                               
+{'loss': 2.6272, 'learning_rate': 1.1551155115511552e-05, 'epoch': 0.42}                                                                              
+{'loss': 2.5951, 'learning_rate': 1.1362564827911365e-05, 'epoch': 0.43}                                                                              
+{'loss': 2.5572, 'learning_rate': 1.1173974540311174e-05, 'epoch': 0.44}                                                                              
+{'loss': 2.641, 'learning_rate': 1.0985384252710987e-05, 'epoch': 0.45}                                                                               
+{'loss': 2.575, 'learning_rate': 1.0796793965110796e-05, 'epoch': 0.46}                                                                               
+{'loss': 2.5972, 'learning_rate': 1.0608203677510608e-05, 'epoch': 0.47}                                                                              
+{'loss': 2.5891, 'learning_rate': 1.0419613389910421e-05, 'epoch': 0.48}                                                                              
+{'loss': 2.55, 'learning_rate': 1.0231023102310232e-05, 'epoch': 0.49}                                                                                
+{'loss': 2.5811, 'learning_rate': 1.0042432814710044e-05, 'epoch': 0.5}                                                                               
+{'loss': 2.5972, 'learning_rate': 9.853842527109855e-06, 'epoch': 0.51}                                                                               
+{'loss': 2.5482, 'learning_rate': 9.665252239509666e-06, 'epoch': 0.52}                                                                               
+{'loss': 2.5849, 'learning_rate': 9.476661951909477e-06, 'epoch': 0.53}                                                                               
+{'loss': 2.5287, 'learning_rate': 9.288071664309288e-06, 'epoch': 0.54}                                                                               
+{'loss': 2.5271, 'learning_rate': 9.0994813767091e-06, 'epoch': 0.55}                                                                                 
+{'loss': 2.5241, 'learning_rate': 8.910891089108911e-06, 'epoch': 0.56}                                                                               
+{'loss': 2.5184, 'learning_rate': 8.722300801508722e-06, 'epoch': 0.56}                                                                               
+{'loss': 2.5322, 'learning_rate': 8.533710513908535e-06, 'epoch': 0.57}                                                                               
+{'loss': 2.5123, 'learning_rate': 8.345120226308346e-06, 'epoch': 0.58}                                                                               
+{'loss': 2.5104, 'learning_rate': 8.156529938708158e-06, 'epoch': 0.59}                                                                               
+{'loss': 2.5343, 'learning_rate': 7.967939651107969e-06, 'epoch': 0.6}                                                                                
+{'loss': 2.4998, 'learning_rate': 7.77934936350778e-06, 'epoch': 0.61}                                                                                
+{'loss': 2.4954, 'learning_rate': 7.590759075907591e-06, 'epoch': 0.62}                                                                               
+{'loss': 2.4945, 'learning_rate': 7.4021687883074026e-06, 'epoch': 0.63}                                                                              
+{'loss': 2.4883, 'learning_rate': 7.213578500707214e-06, 'epoch': 0.64}                                                                               
+{'loss': 2.5023, 'learning_rate': 7.024988213107026e-06, 'epoch': 0.65}                                                                               
+{'loss': 2.4812, 'learning_rate': 6.836397925506837e-06, 'epoch': 0.66}                                                                               
+{'loss': 2.4957, 'learning_rate': 6.647807637906648e-06, 'epoch': 0.67}                                                                               
+{'loss': 2.4971, 'learning_rate': 6.4592173503064595e-06, 'epoch': 0.68}                                                                              
+{'loss': 2.4661, 'learning_rate': 6.270627062706271e-06, 'epoch': 0.69}                                                                               
+{'loss': 2.5217, 'learning_rate': 6.082036775106083e-06, 'epoch': 0.7}                                                                                
+{'loss': 2.483, 'learning_rate': 5.893446487505894e-06, 'epoch': 0.71}                                                                                
+{'loss': 2.4878, 'learning_rate': 5.704856199905705e-06, 'epoch': 0.72}                                                                               
+{'loss': 2.5071, 'learning_rate': 5.516265912305516e-06, 'epoch': 0.72}                                                                               
+{'loss': 2.4801, 'learning_rate': 5.327675624705329e-06, 'epoch': 0.73}                                                                               
+{'loss': 2.46, 'learning_rate': 5.13908533710514e-06, 'epoch': 0.74}                                                                                  
+{'loss': 2.5047, 'learning_rate': 4.950495049504951e-06, 'epoch': 0.75}                                                                               
+{'loss': 2.465, 'learning_rate': 4.761904761904762e-06, 'epoch': 0.76}                                                                                
+{'loss': 2.4735, 'learning_rate': 4.573314474304574e-06, 'epoch': 0.77}                                                                               
+{'loss': 2.4686, 'learning_rate': 4.384724186704385e-06, 'epoch': 0.78}                                                                               
+{'loss': 2.4765, 'learning_rate': 4.196133899104197e-06, 'epoch': 0.79}                                                                               
+{'loss': 2.4866, 'learning_rate': 4.0075436115040076e-06, 'epoch': 0.8}                                                                               
+{'loss': 2.4434, 'learning_rate': 3.818953323903819e-06, 'epoch': 0.81}                                                                               
+{'loss': 2.4551, 'learning_rate': 3.6303630363036306e-06, 'epoch': 0.82}                                                                              
+{'loss': 2.4268, 'learning_rate': 3.441772748703442e-06, 'epoch': 0.83}                                                                               
+{'loss': 2.445, 'learning_rate': 3.2531824611032536e-06, 'epoch': 0.84}                                                                               
+{'loss': 2.4048, 'learning_rate': 3.064592173503065e-06, 'epoch': 0.85}                                                                               
+{'loss': 2.4502, 'learning_rate': 2.876001885902876e-06, 'epoch': 0.86}                                                                               
+{'loss': 2.4555, 'learning_rate': 2.687411598302688e-06, 'epoch': 0.87}                                                                               
+{'loss': 2.4405, 'learning_rate': 2.4988213107024988e-06, 'epoch': 0.88}                                                                              
+{'loss': 2.4389, 'learning_rate': 2.3102310231023105e-06, 'epoch': 0.88}                                                                              
+{'loss': 2.4271, 'learning_rate': 2.1216407355021218e-06, 'epoch': 0.89}                                                                              
+{'loss': 2.429, 'learning_rate': 1.933050447901933e-06, 'epoch': 0.9}                                                                                 
+{'loss': 2.438, 'learning_rate': 1.7444601603017448e-06, 'epoch': 0.91}                                                                               
+{'loss': 2.4255, 'learning_rate': 1.5558698727015559e-06, 'epoch': 0.92}                                                                              
+{'loss': 2.4395, 'learning_rate': 1.3672795851013674e-06, 'epoch': 0.93}                                                                              
+{'loss': 2.4165, 'learning_rate': 1.1786892975011789e-06, 'epoch': 0.94}                                                                              
+{'loss': 2.4479, 'learning_rate': 9.900990099009902e-07, 'epoch': 0.95}                                                                               
+{'loss': 2.4233, 'learning_rate': 8.015087223008016e-07, 'epoch': 0.96}                                                                               
+{'loss': 2.4319, 'learning_rate': 6.12918434700613e-07, 'epoch': 0.97}                                                                                
+{'loss': 2.4324, 'learning_rate': 4.243281471004244e-07, 'epoch': 0.98}                                                                               
+{'loss': 2.4335, 'learning_rate': 2.3573785950023575e-07, 'epoch': 0.99}                                                                              
+{'loss': 2.4459, 'learning_rate': 4.7147571900047156e-08, 'epoch': 1.0}                                                                               
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [3:17:53<00:00,  4.47it/s]The following columns in the evaluation set don't have a corresponding argument in `DebertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `DebertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 32
+{'eval_loss': 2.2731244564056396, 'eval_runtime': 598.5781, 'eval_samples_per_second': 501.188, 'eval_steps_per_second': 15.662, 'epoch': 1.0}        
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [3:27:51<00:00,  4.47it/sSaving model checkpoint to ./deberta-pre/checkpoint-53125                                                                                              
+Configuration saved in ./deberta-pre/checkpoint-53125/config.json
+Model weights saved in ./deberta-pre/checkpoint-53125/pytorch_model.bin
+tokenizer config file saved in ./deberta-pre/checkpoint-53125/tokenizer_config.json
+Special tokens file saved in ./deberta-pre/checkpoint-53125/special_tokens_map.json
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from ./deberta-pre/checkpoint-53125 (score: 2.2731244564056396).
+{'train_runtime': 12474.1957, 'train_samples_per_second': 136.281, 'train_steps_per_second': 4.259, 'train_loss': 2.7248664964384193, 'epoch': 1.0}   
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [3:27:54<00:00,  4.26it/s]
+Saving model checkpoint to ./deberta-dpt-online-sexism
+Configuration saved in ./deberta-dpt-online-sexism/config.json
+Model weights saved in ./deberta-dpt-online-sexism/pytorch_model.bin
+tokenizer config file saved in ./deberta-dpt-online-sexism/tokenizer_config.json
+Special tokens file saved in ./deberta-dpt-online-sexism/special_tokens_map.json
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/config.json
+Model config DebertaConfig {
+  "_name_or_path": "microsoft/deberta-base",
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-07,
+  "max_position_embeddings": 512,
+  "max_relative_positions": -1,
+  "model_type": "deberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_dropout": 0,
+  "pooler_hidden_act": "gelu",
+  "pooler_hidden_size": 768,
+  "pos_att_type": [
+    "c2p",
+    "p2c"
+  ],
+  "position_biased_input": false,
+  "relative_attention": true,
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 0,
+  "vocab_size": 50265
+}
+
+loading file vocab.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/vocab.json
+loading file merges.txt from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/merges.txt
+loading file added_tokens.json from cache at None
+loading file special_tokens_map.json from cache at None
+loading file tokenizer_config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/tokenizer_config.json
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/config.json
+Model config DebertaConfig {
+  "_name_or_path": "microsoft/deberta-base",
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-07,
+  "max_position_embeddings": 512,
+  "max_relative_positions": -1,
+  "model_type": "deberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_dropout": 0,
+  "pooler_hidden_act": "gelu",
+  "pooler_hidden_size": 768,
+  "pos_att_type": [
+    "c2p",
+    "p2c"
+  ],
+  "position_biased_input": false,
+  "relative_attention": true,
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 0,
+  "vocab_size": 50265
+}
+
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/config.json
+Model config DebertaConfig {
+  "_name_or_path": "microsoft/deberta-base",
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-07,
+  "max_position_embeddings": 512,
+  "max_relative_positions": -1,
+  "model_type": "deberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_dropout": 0,
+  "pooler_hidden_act": "gelu",
+  "pooler_hidden_size": 768,
+  "pos_att_type": [
+    "c2p",
+    "p2c"
+  ],
+  "position_biased_input": false,
+  "relative_attention": true,
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 0,
+  "vocab_size": 50265
+}
+
+loading weights file pytorch_model.bin from cache at /home2/debashish.roy/.cache/huggingface/hub/models--microsoft--deberta-base/snapshots/0d1b43ccf21b5acd9f4e5f7b077fa698f05cf195/pytorch_model.bin
+Some weights of the model checkpoint at microsoft/deberta-base were not used when initializing DebertaForMaskedLM: ['lm_predictions.lm_head.bias', 'lm_predictions.lm_head.dense.bias', 'lm_predictions.lm_head.dense.weight', 'lm_predictions.lm_head.LayerNorm.weight', 'deberta.embeddings.position_embeddings.weight', 'lm_predictions.lm_head.LayerNorm.bias']
+- This IS expected if you are initializing DebertaForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of DebertaForMaskedLM were not initialized from the model checkpoint at microsoft/deberta-base and are newly initialized: ['cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+No `TrainingArguments` passed, using `output_dir=tmp_trainer`.
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the evaluation set don't have a corresponding argument in `DebertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `DebertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 8
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 37500/37500 [14:34<00:00, 42.87it/s]
+Evaluation results:  {'eval_loss': 11.524263381958008, 'eval_runtime': 874.7496, 'eval_samples_per_second': 342.955, 'eval_steps_per_second': 42.869}
+Perplexity: 101140.243
+----------------
+
+Model:  ./deberta-dpt-online-sexism
+loading file vocab.json
+loading file merges.txt
+loading file added_tokens.json
+loading file special_tokens_map.json
+loading file tokenizer_config.json
+loading configuration file ./deberta-dpt-online-sexism/config.json
+Model config DebertaConfig {
+  "_name_or_path": "./deberta-dpt-online-sexism",
+  "architectures": [
+    "DebertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-07,
+  "max_position_embeddings": 512,
+  "max_relative_positions": -1,
+  "model_type": "deberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_dropout": 0,
+  "pooler_hidden_act": "gelu",
+  "pooler_hidden_size": 768,
+  "pos_att_type": [
+    "c2p",
+    "p2c"
+  ],
+  "position_biased_input": false,
+  "relative_attention": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 0,
+  "vocab_size": 50265
+}
+
+loading weights file ./deberta-dpt-online-sexism/pytorch_model.bin
+All model checkpoint weights were used when initializing DebertaForMaskedLM.
+
+All the weights of DebertaForMaskedLM were initialized from the model checkpoint at ./deberta-dpt-online-sexism.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use DebertaForMaskedLM for predictions without further training.
+No `TrainingArguments` passed, using `output_dir=tmp_trainer`.
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the evaluation set don't have a corresponding argument in `DebertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `DebertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 8
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 37500/37500 [14:38<00:00, 42.68it/s]
+Evaluation results:  {'eval_loss': 2.2755911350250244, 'eval_runtime': 878.6955, 'eval_samples_per_second': 341.415, 'eval_steps_per_second': 42.677}
+Perplexity: 9.734
+----------------

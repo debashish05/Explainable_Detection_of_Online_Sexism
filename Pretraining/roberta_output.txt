@@ -1,0 +1,326 @@
+(base) debashish.roy@gnode084:/ssd_scratch/cvit/debashish$ python roberta-pretraining.py 
+/ssd_scratch/cvit/debashish/roberta-pretraining.py:38: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  dtf_mlm=dtf_mlm1.append(dtf_mlm2)
+                                                     text
+0                       JUST SAYING.... YOU LOSE BIATCHES
+1       HOW WOULD I DESCRIBE BERKELEY RIOTS? 1) Charmi...
+2       Or maybe a little south of Herring Run. More l...
+3                                      That's funny...but
+4       Unbelievable! It Was (((Rosenstein))) Who Hid ...
+...                                                   ...
+999995  And the men and women successfully using it wo...
+999996  By taking advantage of betas. Good one. I gues...
+999997  You're clearly a fakecel if having a daughter ...
+999998  No. Suicide takes shortsightedness, blindness....
+999999  Quora has some retarded ass shit on it. I read...
+
+[2000000 rows x 1 columns]
+Dataset({                                                                                                                                             
+    features: ['input_ids', 'special_tokens_mask', 'attention_mask'],
+    num_rows: 1700000
+})
+Dataset({
+    features: ['input_ids', 'special_tokens_mask', 'attention_mask'],
+    num_rows: 300000
+})
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the training set don't have a corresponding argument in `RobertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `RobertaForMaskedLM.forward`,  you can safely ignore this message.
+/home2/debashish.roy/miniconda3/lib/python3.10/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+***** Running training *****
+  Num examples = 1700000
+  Num Epochs = 1
+  Instantaneous batch size per device = 32
+  Total train batch size (w. parallel, distributed & accumulation) = 32
+  Gradient Accumulation steps = 1
+  Total optimization steps = 53125
+  Number of trainable parameters = 124697433
+{'loss': 2.4311, 'learning_rate': 1.984912776991985e-05, 'epoch': 0.01}                                                                               
+{'loss': 2.3909, 'learning_rate': 1.9660537482319663e-05, 'epoch': 0.02}                                                                              
+{'loss': 2.3629, 'learning_rate': 1.9471947194719475e-05, 'epoch': 0.03}                                                                              
+{'loss': 2.3655, 'learning_rate': 1.9283356907119285e-05, 'epoch': 0.04}                                                                              
+{'loss': 2.335, 'learning_rate': 1.9094766619519097e-05, 'epoch': 0.05}                                                                               
+{'loss': 2.3481, 'learning_rate': 1.890617633191891e-05, 'epoch': 0.06}                                                                               
+{'loss': 2.3216, 'learning_rate': 1.871758604431872e-05, 'epoch': 0.07}                                                                               
+{'loss': 2.3385, 'learning_rate': 1.852899575671853e-05, 'epoch': 0.08}                                                                               
+{'loss': 2.2805, 'learning_rate': 1.834040546911834e-05, 'epoch': 0.08}                                                                               
+{'loss': 2.339, 'learning_rate': 1.8151815181518153e-05, 'epoch': 0.09}                                                                               
+{'loss': 2.2872, 'learning_rate': 1.7963224893917966e-05, 'epoch': 0.1}                                                                               
+{'loss': 2.3178, 'learning_rate': 1.7774634606317775e-05, 'epoch': 0.11}                                                                              
+{'loss': 2.2874, 'learning_rate': 1.7586044318717588e-05, 'epoch': 0.12}                                                                              
+{'loss': 2.2922, 'learning_rate': 1.7397454031117397e-05, 'epoch': 0.13}                                                                              
+{'loss': 2.2537, 'learning_rate': 1.720886374351721e-05, 'epoch': 0.14}                                                                               
+{'loss': 2.3061, 'learning_rate': 1.7020273455917022e-05, 'epoch': 0.15}                                                                              
+{'loss': 2.2801, 'learning_rate': 1.683168316831683e-05, 'epoch': 0.16}                                                                               
+{'loss': 2.3, 'learning_rate': 1.6643092880716644e-05, 'epoch': 0.17}                                                                                 
+{'loss': 2.261, 'learning_rate': 1.6454502593116456e-05, 'epoch': 0.18}                                                                               
+{'loss': 2.2558, 'learning_rate': 1.626591230551627e-05, 'epoch': 0.19}                                                                               
+{'loss': 2.2569, 'learning_rate': 1.6077322017916078e-05, 'epoch': 0.2}                                                                               
+{'loss': 2.2786, 'learning_rate': 1.588873173031589e-05, 'epoch': 0.21}                                                                               
+{'loss': 2.2424, 'learning_rate': 1.5700141442715703e-05, 'epoch': 0.22}                                                                              
+{'loss': 2.2823, 'learning_rate': 1.5511551155115512e-05, 'epoch': 0.23}                                                                              
+{'loss': 2.2305, 'learning_rate': 1.5322960867515325e-05, 'epoch': 0.24}                                                                              
+{'loss': 2.2604, 'learning_rate': 1.5134370579915136e-05, 'epoch': 0.24}                                                                              
+{'loss': 2.2492, 'learning_rate': 1.4945780292314947e-05, 'epoch': 0.25}                                                                              
+{'loss': 2.2311, 'learning_rate': 1.4757190004714759e-05, 'epoch': 0.26}                                                                              
+{'loss': 2.2707, 'learning_rate': 1.4568599717114568e-05, 'epoch': 0.27}                                                                              
+{'loss': 2.228, 'learning_rate': 1.438000942951438e-05, 'epoch': 0.28}                                                                                
+{'loss': 2.2271, 'learning_rate': 1.4191419141914193e-05, 'epoch': 0.29}                                                                              
+{'loss': 2.2381, 'learning_rate': 1.4002828854314003e-05, 'epoch': 0.3}                                                                               
+{'loss': 2.2112, 'learning_rate': 1.3814238566713815e-05, 'epoch': 0.31}                                                                              
+{'loss': 2.2501, 'learning_rate': 1.3625648279113626e-05, 'epoch': 0.32}                                                                              
+{'loss': 2.2148, 'learning_rate': 1.3437057991513439e-05, 'epoch': 0.33}                                                                              
+{'loss': 2.2401, 'learning_rate': 1.3248467703913251e-05, 'epoch': 0.34}                                                                              
+{'loss': 2.1991, 'learning_rate': 1.305987741631306e-05, 'epoch': 0.35}                                                                               
+{'loss': 2.2278, 'learning_rate': 1.2871287128712873e-05, 'epoch': 0.36}                                                                              
+{'loss': 2.2392, 'learning_rate': 1.2682696841112682e-05, 'epoch': 0.37}                                                                              
+{'loss': 2.2054, 'learning_rate': 1.2494106553512495e-05, 'epoch': 0.38}                                                                              
+{'loss': 2.1951, 'learning_rate': 1.2305516265912307e-05, 'epoch': 0.39}                                                                              
+{'loss': 2.2217, 'learning_rate': 1.2116925978312118e-05, 'epoch': 0.4}                                                                               
+{'loss': 2.2152, 'learning_rate': 1.1928335690711929e-05, 'epoch': 0.4}                                                                               
+{'loss': 2.1986, 'learning_rate': 1.173974540311174e-05, 'epoch': 0.41}                                                                               
+{'loss': 2.2007, 'learning_rate': 1.1551155115511552e-05, 'epoch': 0.42}                                                                              
+{'loss': 2.1939, 'learning_rate': 1.1362564827911365e-05, 'epoch': 0.43}                                                                              
+{'loss': 2.1687, 'learning_rate': 1.1173974540311174e-05, 'epoch': 0.44}                                                                              
+{'loss': 2.2328, 'learning_rate': 1.0985384252710987e-05, 'epoch': 0.45}                                                                              
+{'loss': 2.1704, 'learning_rate': 1.0796793965110796e-05, 'epoch': 0.46}                                                                              
+{'loss': 2.1967, 'learning_rate': 1.0608203677510608e-05, 'epoch': 0.47}                                                                              
+{'loss': 2.1973, 'learning_rate': 1.0419613389910421e-05, 'epoch': 0.48}                                                                              
+{'loss': 2.1554, 'learning_rate': 1.0231023102310232e-05, 'epoch': 0.49}                                                                              
+{'loss': 2.1958, 'learning_rate': 1.0042432814710044e-05, 'epoch': 0.5}                                                                               
+{'loss': 2.2164, 'learning_rate': 9.853842527109855e-06, 'epoch': 0.51}                                                                               
+{'loss': 2.1797, 'learning_rate': 9.665252239509666e-06, 'epoch': 0.52}                                                                               
+{'loss': 2.1982, 'learning_rate': 9.476661951909477e-06, 'epoch': 0.53}                                                                               
+{'loss': 2.157, 'learning_rate': 9.288071664309288e-06, 'epoch': 0.54}                                                                                
+{'loss': 2.1505, 'learning_rate': 9.0994813767091e-06, 'epoch': 0.55}                                                                                 
+{'loss': 2.153, 'learning_rate': 8.910891089108911e-06, 'epoch': 0.56}                                                                                
+{'loss': 2.1546, 'learning_rate': 8.722300801508722e-06, 'epoch': 0.56}                                                                               
+{'loss': 2.1738, 'learning_rate': 8.533710513908535e-06, 'epoch': 0.57}                                                                               
+{'loss': 2.1489, 'learning_rate': 8.345120226308346e-06, 'epoch': 0.58}                                                                               
+{'loss': 2.1459, 'learning_rate': 8.156529938708158e-06, 'epoch': 0.59}                                                                               
+{'loss': 2.1765, 'learning_rate': 7.967939651107969e-06, 'epoch': 0.6}                                                                                
+{'loss': 2.1418, 'learning_rate': 7.77934936350778e-06, 'epoch': 0.61}                                                                                
+{'loss': 2.1513, 'learning_rate': 7.590759075907591e-06, 'epoch': 0.62}                                                                               
+{'loss': 2.1325, 'learning_rate': 7.4021687883074026e-06, 'epoch': 0.63}                                                                              
+{'loss': 2.1371, 'learning_rate': 7.213578500707214e-06, 'epoch': 0.64}                                                                               
+{'loss': 2.1571, 'learning_rate': 7.024988213107026e-06, 'epoch': 0.65}                                                                               
+{'loss': 2.1313, 'learning_rate': 6.836397925506837e-06, 'epoch': 0.66}                                                                               
+{'loss': 2.1421, 'learning_rate': 6.647807637906648e-06, 'epoch': 0.67}                                                                               
+{'loss': 2.145, 'learning_rate': 6.4592173503064595e-06, 'epoch': 0.68}                                                                               
+{'loss': 2.129, 'learning_rate': 6.270627062706271e-06, 'epoch': 0.69}                                                                                
+{'loss': 2.1786, 'learning_rate': 6.082036775106083e-06, 'epoch': 0.7}                                                                                
+{'loss': 2.1446, 'learning_rate': 5.893446487505894e-06, 'epoch': 0.71}                                                                               
+{'loss': 2.1409, 'learning_rate': 5.704856199905705e-06, 'epoch': 0.72}                                                                               
+{'loss': 2.1705, 'learning_rate': 5.516265912305516e-06, 'epoch': 0.72}                                                                               
+{'loss': 2.137, 'learning_rate': 5.327675624705329e-06, 'epoch': 0.73}                                                                                
+{'loss': 2.1192, 'learning_rate': 5.13908533710514e-06, 'epoch': 0.74}                                                                                
+{'loss': 2.1522, 'learning_rate': 4.950495049504951e-06, 'epoch': 0.75}                                                                               
+{'loss': 2.1298, 'learning_rate': 4.761904761904762e-06, 'epoch': 0.76}                                                                               
+{'loss': 2.1301, 'learning_rate': 4.573314474304574e-06, 'epoch': 0.77}                                                                               
+{'loss': 2.1438, 'learning_rate': 4.384724186704385e-06, 'epoch': 0.78}                                                                               
+{'loss': 2.1359, 'learning_rate': 4.196133899104197e-06, 'epoch': 0.79}                                                                               
+{'loss': 2.1422, 'learning_rate': 4.0075436115040076e-06, 'epoch': 0.8}                                                                               
+{'loss': 2.118, 'learning_rate': 3.818953323903819e-06, 'epoch': 0.81}                                                                                
+{'loss': 2.1328, 'learning_rate': 3.6303630363036306e-06, 'epoch': 0.82}                                                                              
+{'loss': 2.1017, 'learning_rate': 3.441772748703442e-06, 'epoch': 0.83}                                                                               
+{'loss': 2.1252, 'learning_rate': 3.2531824611032536e-06, 'epoch': 0.84}                                                                              
+{'loss': 2.0779, 'learning_rate': 3.064592173503065e-06, 'epoch': 0.85}                                                                               
+{'loss': 2.1371, 'learning_rate': 2.876001885902876e-06, 'epoch': 0.86}                                                                               
+{'loss': 2.1248, 'learning_rate': 2.687411598302688e-06, 'epoch': 0.87}                                                                               
+{'loss': 2.1178, 'learning_rate': 2.4988213107024988e-06, 'epoch': 0.88}                                                                              
+{'loss': 2.1129, 'learning_rate': 2.3102310231023105e-06, 'epoch': 0.88}                                                                              
+{'loss': 2.1021, 'learning_rate': 2.1216407355021218e-06, 'epoch': 0.89}                                                                              
+{'loss': 2.1003, 'learning_rate': 1.933050447901933e-06, 'epoch': 0.9}                                                                                
+{'loss': 2.1162, 'learning_rate': 1.7444601603017448e-06, 'epoch': 0.91}                                                                              
+{'loss': 2.0978, 'learning_rate': 1.5558698727015559e-06, 'epoch': 0.92}                                                                              
+{'loss': 2.1104, 'learning_rate': 1.3672795851013674e-06, 'epoch': 0.93}                                                                              
+{'loss': 2.0953, 'learning_rate': 1.1786892975011789e-06, 'epoch': 0.94}                                                                              
+{'loss': 2.1119, 'learning_rate': 9.900990099009902e-07, 'epoch': 0.95}                                                                               
+{'loss': 2.0883, 'learning_rate': 8.015087223008016e-07, 'epoch': 0.96}                                                                               
+{'loss': 2.1081, 'learning_rate': 6.12918434700613e-07, 'epoch': 0.97}                                                                                
+{'loss': 2.1192, 'learning_rate': 4.243281471004244e-07, 'epoch': 0.98}                                                                               
+{'loss': 2.1104, 'learning_rate': 2.3573785950023575e-07, 'epoch': 0.99}                                                                              
+{'loss': 2.128, 'learning_rate': 4.7147571900047156e-08, 'epoch': 1.0}                                                                                
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [2:53:17<00:00,  5.11it/s]The following columns in the evaluation set don't have a corresponding argument in `RobertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `RobertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 32
+{'eval_loss': 1.9781725406646729, 'eval_runtime': 527.6195, 'eval_samples_per_second': 568.592, 'eval_steps_per_second': 17.768, 'epoch': 1.0}        
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [3:02:05<00:00,  5.11it/sSaving model checkpoint to ./roberta-output/checkpoint-53125                                                                                           
+Configuration saved in ./roberta-output/checkpoint-53125/config.json
+Model weights saved in ./roberta-output/checkpoint-53125/pytorch_model.bin
+tokenizer config file saved in ./roberta-output/checkpoint-53125/tokenizer_config.json
+Special tokens file saved in ./roberta-output/checkpoint-53125/special_tokens_map.json
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from ./roberta-output/checkpoint-53125 (score: 1.9781725406646729).
+{'train_runtime': 10927.7978, 'train_samples_per_second': 155.567, 'train_steps_per_second': 4.861, 'train_loss': 2.1966494893152575, 'epoch': 1.0}   
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 53125/53125 [3:02:07<00:00,  4.86it/s]
+Saving model checkpoint to ./roberta-dpt-online-sexism
+Configuration saved in ./roberta-dpt-online-sexism/config.json
+Model weights saved in ./roberta-dpt-online-sexism/pytorch_model.bin
+tokenizer config file saved in ./roberta-dpt-online-sexism/tokenizer_config.json
+Special tokens file saved in ./roberta-dpt-online-sexism/special_tokens_map.json
+Could not locate the tokenizer configuration file, will try to use the model config instead.
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/config.json
+Model config RobertaConfig {
+  "_name_or_path": "roberta-base",
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading file vocab.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/vocab.json
+loading file merges.txt from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/merges.txt
+loading file added_tokens.json from cache at None
+loading file special_tokens_map.json from cache at None
+loading file tokenizer_config.json from cache at None
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/config.json
+Model config RobertaConfig {
+  "_name_or_path": "roberta-base",
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading configuration file config.json from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/config.json
+Model config RobertaConfig {
+  "_name_or_path": "roberta-base",
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading weights file pytorch_model.bin from cache at /home2/debashish.roy/.cache/huggingface/hub/models--roberta-base/snapshots/ff46155979338ff8063cdad90908b498ab91b181/pytorch_model.bin
+All model checkpoint weights were used when initializing RobertaForMaskedLM.
+
+All the weights of RobertaForMaskedLM were initialized from the model checkpoint at roberta-base.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use RobertaForMaskedLM for predictions without further training.
+No `TrainingArguments` passed, using `output_dir=tmp_trainer`.
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the evaluation set don't have a corresponding argument in `RobertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `RobertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 8
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 37500/37500 [10:03<00:00, 62.10it/s]
+Evaluation results:  {'eval_loss': 2.4947800636291504, 'eval_runtime': 603.8981, 'eval_samples_per_second': 496.773, 'eval_steps_per_second': 62.097}
+Perplexity: 12.119
+----------------
+
+Model:  ./roberta-dpt-online-sexism
+loading file vocab.json
+loading file merges.txt
+loading file added_tokens.json
+loading file special_tokens_map.json
+loading file tokenizer_config.json
+loading configuration file ./roberta-dpt-online-sexism/config.json
+Model config RobertaConfig {
+  "_name_or_path": "./roberta-dpt-online-sexism",
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "torch_dtype": "float32",
+  "transformers_version": "4.26.1",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading weights file ./roberta-dpt-online-sexism/pytorch_model.bin
+All model checkpoint weights were used when initializing RobertaForMaskedLM.
+
+All the weights of RobertaForMaskedLM were initialized from the model checkpoint at ./roberta-dpt-online-sexism.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use RobertaForMaskedLM for predictions without further training.
+No `TrainingArguments` passed, using `output_dir=tmp_trainer`.
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+The following columns in the evaluation set don't have a corresponding argument in `RobertaForMaskedLM.forward` and have been ignored: special_tokens_mask. If special_tokens_mask are not expected by `RobertaForMaskedLM.forward`,  you can safely ignore this message.
+***** Running Evaluation *****
+  Num examples = 300000
+  Batch size = 8
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 37500/37500 [10:12<00:00, 61.27it/s]
+Evaluation results:  {'eval_loss': 1.9802366495132446, 'eval_runtime': 612.0753, 'eval_samples_per_second': 490.136, 'eval_steps_per_second': 61.267}
+Perplexity: 7.244
+----------------
